@@ -1,0 +1,15 @@
+﻿<alerts></alerts>
+
+<breadcrumb></breadcrumb>
+
+<div class="page-header">
+	<h2>
+		<span class="opensanscondensedlight text-capitalize">All roles</span>
+		<small ng-if="ready">
+			<sub ng-if="model.stats.records == 0"><i class="fa fa-lock"></i> No records found</sub>
+			<sub ng-if="model.stats.records != 0"><i class="fa fa-lock"></i> Showing {{model.stats.pageStart}} to {{model.stats.pageEnd}} of {{model.stats.records}} roles</sub>
+		</small>
+	</h2>
+</div>
+
+<grid cache-key="roles" load="'/api/administration/getallroles'" icon="fa-eye"></grid>

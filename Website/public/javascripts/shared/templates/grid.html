@@ -1,0 +1,60 @@
+﻿<div class="row">
+	<div class="col-sm-7">
+		<form>
+			<div class="form-group">
+				<div class="btn-group">
+					<button class="btn btn-default dropdown-toggle" type="button" ng-disabled="loading" data-toggle="dropdown">
+						{{parameters.size}} entries per page
+						<span class="caret"></span>
+					</button>
+
+					<ul class="dropdown-menu">
+						<li><a ng-click="resize(5)"><span class="fixed right">5</span> entries</a></li>
+						<li><a ng-click="resize(10)"><span class="fixed right">10</span> entries</a></li>
+						<li><a ng-click="resize(50)"><span class="fixed right">50</span> entries</a></li>
+						<li><a ng-click="resize(100)"><span class="fixed right">100</span> entries</a></li>
+					</ul>
+				</div>
+				
+				<a href="/administration" class="btn btn-default" ng-disabled="loading">Close</a>
+			</div>
+		</form>
+	</div>
+
+	<div class="col-sm-5">
+		<form>
+			<div class="form-group">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Filter..." maxlength="200" autofocus ng-model="parameters.filter" />
+
+					<span class="input-group-btn">
+						<button class="btn btn-primary" type="submit" ng-disabled="loading" ng-click="filter()"><i class="fa fa-filter"></i></button>
+					</span>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="table-responsive" ng-if="model.stats.records != 0">
+	<table class="table table-condensed table-hover table-striped">
+		<tr>
+			<th></th>
+			<th class="text-nowrap unselectable" ng-class="{'text-center': column.alignment == 1, 'text-right': column.alignment == 2}" ng-repeat="column in model.columns" ng-click="sort(column.name)">
+				{{column.caption}} <i ng-if="column.name == parameters.name" class="fa" ng-class="{'fa-sort-asc': parameters.direction == 'asc', 'fa-sort-desc': parameters.direction == 'desc'}"></i>
+			</th>
+		</tr>
+
+		<tr ng-repeat="row in model.rows">
+			<td>
+				<a href="{{row.url}}"><i class="fa {{icon}}"></i></a>
+			</td>
+			<td ng-class="{'text-center': cell.alignment == 1, 'text-right': cell.alignment == 2}" ng-repeat="cell in row.cells track by $index">
+				{{cell.caption}}
+			</td>
+		</tr>
+	</table>
+</div>
+
+<pagination class="pagination-sm hidden-xs" ng-if="model.stats.records != 0" ng-change="page()" ng-model="model.stats.page" total-items="model.stats.records" items-per-page="parameters.size" max-size="5" num-pages="model.stats.pages" boundary-links="true" rotate="false"></pagination>
+<pager class="visible-xs" ng-if="model.stats.records != 0" ng-change="page()" ng-model="model.stats.page" total-items="model.stats.records"></pager>

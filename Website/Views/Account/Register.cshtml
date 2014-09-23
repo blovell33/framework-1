@@ -1,0 +1,79 @@
+﻿<alerts></alerts>
+
+<form name="form" class="form" interactive ng-if="!success">
+	<h2 class="form-heading"><span class="opensanscondensedlight">Register</span></h2>
+
+	<p>
+		To sign up as a new user, fill out the following form then click 'Submit'.
+	</p>
+
+	<div class="form-group">
+		<label class="control-label" for="firstName">First name</label>
+		<input name="firstName" type="text" class="form-control" placeholder="First name" maxlength="45" required autofocus ng-model="model.firstName" validate="{type: 'IsRequired'}" />
+	</div>
+
+	<div class="form-group">
+		<label class="control-label" for="lastName">Last name</label>
+		<input name="lastName" type="text" class="form-control" placeholder="Last name" maxlength="45" required ng-model="model.lastName" validate="{type: 'IsRequired'}" />
+	</div>
+
+	<div class="form-group">
+		<label class="control-label" for="username">Username</label>
+		<input name="username" type="text" class="form-control" placeholder="Username" maxlength="45" required ng-model="model.username" validate="{type: 'NewUserByUsername'}" />
+	</div>
+
+	<div class="form-group">
+		<label class="control-label" for="email">Email</label>
+		<input name="email" type="text" class="form-control" placeholder="Email address" maxlength="254" required ng-model="model.email" validate="{type: 'NewUserByEmail'}" />
+	</div>
+
+	<div class="form-group">
+		<label class="control-label" for="password">Password</label>
+		<input name="password" type="password" class="form-control" placeholder="Password" required ng-model="model.password" validate="{type: 'Password'}" />
+	</div>
+
+	<div class="form-group">
+		<label class="control-label" for="confirm-password">Confirm password</label>
+		<input name="confirm-password" type="password" class="form-control" placeholder="Confirm password" required ng-model="model.confirmPassword" validate="{type: 'Compare', compareTo: 'password'}" />
+	</div>
+
+	<captcha></captcha>
+
+	<button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="form.$invalid || loading" ng-click="register()">Submit</button>
+
+	<footer>
+		<a href="/" target="_self">Home</a>
+		<b>&middot;</b>
+		<a href="/account/signin">Sign in</a>
+		<b>&middot;</b>
+		<a href="/account/forgotpassword">Forgot password</a>
+	</footer>
+</form>
+
+<div ng-if="success">
+	<h2 class="form-heading"><span class="opensanscondensedlight">Register</span></h2>
+
+	<p>
+		<strong>Success! An email has been sent to you with instructions regarding your registration request.</strong>
+	</p>
+
+	<p>
+		Log into your email account and find the email from:
+	</p>
+
+	<p>
+		<strong>@ViewBag.Mail.Settings.From</strong>
+	</p>
+
+	<p>
+		Once found, open it and click on the link inside of it.
+	</p>
+
+	<p>
+		This will redirect you to a page within the site that will let you activate your account. Be sure to check you're junk mail if you don't immediately see the email and add it to your safe list.
+	</p>
+
+	<p class="block-btns">
+		<a class="btn btn-lg btn-primary" href="/" target="_self">Continue</a>
+	</p>
+</div>

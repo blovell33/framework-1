@@ -1,0 +1,41 @@
+﻿<alerts></alerts>
+
+<breadcrumb></breadcrumb>
+
+<div class="page-header">
+	<h2>
+		<span class="opensanscondensedlight text-capitalize">Personal information</span>
+	</h2>
+</div>
+
+<form name="form" class="form-horizontal" interactive editable load="'/api/account/getpersonalinformation'">
+	<div class="form-group">
+		<label class="col-sm-3 control-label" for="firstName">First name</label>
+		<div class="col-sm-4">
+			<input name="firstName" type="text" class="form-control" placeholder="First name" maxlength="45" required ng-model="model.firstName" validate="{type: 'IsRequired'}" />
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label" for="lastName">Last name</label>
+		<div class="col-sm-4">
+			<input name="lastName" type="text" class="form-control" placeholder="Last name" maxlength="45" required ng-model="model.lastName" validate="{type: 'IsRequired'}" />
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-3 control-label" for="email">Email</label>
+		<div class="col-sm-4">
+			<input name="email" type="text" class="form-control" placeholder="Email address" maxlength="254" required ng-model="model.email" validate="{type: 'CurrentUserByEmail'}" />
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-9">
+			<button class="btn btn-primary" type="submit" ng-disabled="loading" ng-click="edit()" ng-if="readonly">Edit</button>
+			<a href="/account" class="btn btn-default" ng-disabled="loading" ng-if="readonly">Close</a>
+			<button class="btn btn-primary" type="submit" ng-disabled="form.$invalid || loading" ng-click="updatePersonalInformation()" ng-if="!readonly">Update</button>
+			<button class="btn btn-default" type="button" ng-disabled="loading" ng-click="view()" ng-if="!readonly">Cancel</button>
+		</div>
+	</div>
+</form>

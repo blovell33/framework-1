@@ -1,0 +1,23 @@
+﻿@using Core
+@{
+	Layout = null;
+
+	var settings = ViewBag.Application.Settings as ApplicationSettings;
+}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>@ViewBag.Title - @settings.Name</title>
+		@Html.Partial("StyleSheets")
+		<link href="/public/stylesheets/public.min.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body ng-app="app">
+		<div class="container" ng-view></div>
+
+		@Html.Partial("JavaScripts")
+		<script src="/public/javascripts/account/account.min.js"> </script>
+	</body>
+</html>

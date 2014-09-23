@@ -1,0 +1,41 @@
+﻿@import "shared";
+
+html {
+	height: @document-height;
+
+	body {
+		height: @document-height;
+		padding-top: @menu-height + @default-spacing;
+
+		> #wrap {
+			height: auto;
+			margin: 0 auto -@footer-height;
+			min-height: @document-height;
+			padding: 0 0 @footer-height;
+
+			#sidebar {
+				.panel-heading {
+					border-bottom: 1px solid @border-color;
+				}
+			}
+		}
+
+		> footer {
+			background-color: @light-color;
+			height: @footer-height;
+			line-height: @footer-height - 1;
+
+			> .container {
+				overflow: hidden;
+				-ms-text-overflow: ellipsis;
+				-o-text-overflow: ellipsis;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+
+				img {
+					margin-right: @default-spacing;
+				}
+			}
+		}
+	}
+}

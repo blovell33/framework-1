@@ -1,0 +1,21 @@
+﻿@{
+	var module = ViewContext.RouteData.Values["controller"];
+}
+
+@if (ViewBag.Sidebar == null || !ViewBag.Sidebar) {
+	var fluid = ViewBag.Fluid != null && ViewBag.Fluid;
+
+	<div class="@(fluid ? "container-fluid" : "container")" ng-view></div>
+}
+else {
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4" ng-include="'/public/javascripts/@module/templates/sidebar.html'"></div>
+			<div class="col-sm-8" ng-view></div>
+		</div>
+	</div>
+}
+
+@section scripts {
+	<script src="/public/javascripts/@module/@(module).min.js"> </script>
+}

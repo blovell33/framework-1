@@ -1,0 +1,31 @@
+﻿<alerts></alerts>
+
+<breadcrumb></breadcrumb>
+
+<div class="page-header">
+	<h2>
+		<span class="opensanscondensedlight text-capitalize">Delete user</span>
+		<small ng-if="ready">
+			<sub><i class="fa fa-user"></i> {{model.username}}</sub>
+		</small>
+	</h2>
+</div>
+
+<form name="form" class="form" interactive load="'/api/administration/getuser/' + model.username" ng-if="!success">
+	<p>Are you sure you wish to delete this user?</p>
+
+	<div class="form-group">
+		<button class="btn btn-danger" type="submit" ng-disabled="form.$invalid || loading" ng-click="deleteUser()">Delete</button>
+		<a href="/administration/user/{{model.username}}" class="btn btn-default" ng-disabled="loading">Cancel</a>
+	</div>
+</form>
+
+<div ng-if="success">
+	<p>
+		<strong>Success! The user has been deleted.</strong>
+	</p>
+
+	<p class="block-btns">
+		<a class="btn btn-lg btn-primary" href="/administration/allusers">Continue</a>
+	</p>
+</div>

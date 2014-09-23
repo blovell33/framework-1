@@ -1,0 +1,27 @@
+﻿<alerts></alerts>
+
+<form name="form" class="form login" interactive>
+	<h2 class="form-heading"><span class="opensanscondensedlight">Please sign in...</span></h2>
+
+	<input type="text" class="form-control" placeholder="Email address" maxlength="254" required autofocus ng-model="model.email" />
+
+	<input type="password" class="form-control" placeholder="Password" required ng-model="model.password" />
+
+	<div class="checkbox">
+		<label>
+			<input type="checkbox" value="true" ng-model="model.rememberMe" /> Remember me
+		</label>
+	</div>
+
+	<button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="form.$invalid || loading" ng-click="signIn()">Sign in</button>
+
+	<footer>
+		<a href="/" target="_self">Home</a>
+		<b>&middot;</b>
+		<a href="/account/forgotpassword">Forgot password</a>
+		@if (ViewBag.Application.Settings.CanRegister) {
+			<b>&middot;</b>
+			<a href="/account/register">Register</a>
+		}
+	</footer>
+</form>

@@ -1,0 +1,37 @@
+﻿<alerts></alerts>
+
+<form name="form" class="form" interactive ng-if="!success">
+	<h2 class="form-heading"><span class="opensanscondensedlight">Account Activation</span></h2>
+
+	<p>
+		<strong>You're almost done!</strong>
+	</p>
+
+	<p>
+		Click the button below to complete the process.
+	</p>
+
+	<p>
+		You will be able to sign into the site once your account is active.
+	</p>
+
+	<p>
+		<button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="form.$invalid || loading" ng-click="activate()">Activate</button>
+	</p>
+</form>
+
+<div ng-if="success">
+	<h2 class="form-heading"><span class="opensanscondensedlight">Account Activation</span></h2>
+
+	<p>
+		<strong>Success! Your account is now active.</strong>
+	</p>
+
+	<p>
+		Click the button below to sign in.
+	</p>
+
+	<p class="block-btns">
+		<a class="btn btn-lg btn-primary" href="/account/signin">Continue</a>
+	</p>
+</div>

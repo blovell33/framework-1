@@ -1,0 +1,15 @@
+﻿<alerts></alerts>
+
+<breadcrumb></breadcrumb>
+
+<div class="page-header">
+	<h2>
+		<span class="opensanscondensedlight text-capitalize">All users</span>
+		<small ng-if="ready">
+			<sub ng-if="model.stats.records == 0"><i class="fa fa-user"></i> No records found</sub>
+			<sub ng-if="model.stats.records != 0"><i class="fa fa-user"></i> Showing {{model.stats.pageStart}} to {{model.stats.pageEnd}} of {{model.stats.records}} users</sub>
+		</small>
+	</h2>
+</div>
+
+<grid cache-key="users" load="'/api/administration/getallusers'"></grid>
