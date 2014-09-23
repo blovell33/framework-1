@@ -262,9 +262,6 @@
     <Content Include="public\javascripts\account\account.js.bundle" />
     <Content Include="public\javascripts\administration\administration.js.bundle" />
     <Content Include="public\javascripts\home\home.js.bundle" />
-    <Content Include="public\javascripts\administration\administration.min.js.map">
-      <DependentUpon>administration.min.js</DependentUpon>
-    </Content>
     <Content Include="public\javascripts\home\home.min.js.map">
       <DependentUpon>home.min.js</DependentUpon>
     </Content>
@@ -277,6 +274,9 @@
     <Content Include="public\javascripts\system\system.js.bundle" />
     <Content Include="public\javascripts\system\system.min.js.map">
       <DependentUpon>system.min.js</DependentUpon>
+    </Content>
+    <Content Include="public\javascripts\administration\administration.min.js.map">
+      <DependentUpon>administration.min.js</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
